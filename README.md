@@ -5,7 +5,7 @@ At work I have 30min for taking lunch so I use this app to keep track of the tim
 The alarm is set up to fire by default 30min after the activation but this time can be changed
 and use it as a general purpose alarm.(this is a working progress feature)
 
- #### :iphone: [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true)
+ :iphone: [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true)
 
 ## Usage
 
