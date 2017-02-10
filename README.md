@@ -33,7 +33,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 ## Notes
 
 How to check if AlarmManager already has an alarm set?
-```
+```java
 boolean alarmUp = (PendingIntent.getBroadcast(context, 0,
         new Intent("com.my.package.MY_UNIQUE_ACTION"),
         PendingIntent.FLAG_NO_CREATE) != null);
