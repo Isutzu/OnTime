@@ -5,6 +5,8 @@ At work I have 30min for taking lunch so I use this app to keep track of the tim
 The alarm is set up to fire by default 30min after the activation but this time can be changed
 and use it as a general purpose alarm.(this is a working progress feature)
 
+#### [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true)
+
 ## Usage
 
 * Just press the -- start lunch -- button and the alarm will fire up 30min after.
@@ -30,7 +32,7 @@ For demonstration the alarm have been set to fire up after 10 seconds
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
-#### [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true)
+
 
 
 ## Notes
