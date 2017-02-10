@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity
         calendar.setTimeInMillis(System.currentTimeMillis());
         Date currentTime = calendar.getTime();
 
-        calendar.add(Calendar.MINUTE,1);
+        calendar.add(Calendar.SECOND,10);
         Date alarmSetTime = calendar.getTime();
 
         pendingIntent = PendingIntent.getBroadcast(getBaseContext(),0,intent,0);
@@ -91,6 +91,8 @@ public class MainActivity extends AppCompatActivity
         }
 
         Toast.makeText(this,"Alarm stopped",Toast.LENGTH_SHORT).show();
+        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        notificationManager.cancel(0);
     }
 
 
