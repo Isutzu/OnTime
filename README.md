@@ -30,6 +30,9 @@ For demonstration the alarm have been set to fire up after 10 seconds
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
+#### [Download apk](https://github.com/Isutzu/OnTime/upload/master/app)
+
+
 ## Notes
 
 How to check if AlarmManager already has an alarm set?
