@@ -34,9 +34,10 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 
 ## Emulator
-
-<iframe src="https://appetize.io/embed/e03u41zbbamge6t9urecaredy4?device=nexus5&scale=50&autoplay=false&orientation=portrait&deviceColor=black" width="200px" height="398px" frameborder="0" scrolling="no"></iframe>
-
+```html
+<iframe src="https://appetize.io/embed/e03u41zbbamge6t9urecaredy4?device=nexus5&scale=50&autoplay=false&orientation=portrait&deviceColor=black" width="200px" height="398px" frameborder="0" scrolling="no">
+</iframe>
+```
 ## Notes
 
 How to check if AlarmManager already has an alarm set?
