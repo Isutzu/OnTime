@@ -13,13 +13,6 @@ and use it as a general purpose alarm.(this is a working progress feature)
 * A notification is received when the alarm is activated which can be stopped it by pressing the
 action button.
 
-<button onclick="myFunction()">Try it</button>
-
-<script>
-function myFunction() {
-    alert("I am an alert box!");
-}
-</script>
 
 The following **additional** features will be implemented:
 
