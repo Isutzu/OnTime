@@ -5,8 +5,8 @@ At work I have 30min for taking lunch so I use this app to keep track of the tim
 The alarm is set up to fire by default 30min after the activation but this time can be changed
 and use it as a general purpose alarm.(this is a working progress feature)
 
- :floppy_disk: [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true) &nbsp;&nbsp;
- :iphone:[test app](https://appetize.io/embed/e03u41zbbamge6t9urecaredy4?device=nexus5&scale=65&orientation=portrait&osVersion=7.0)
+ :floppy_disk: [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true) &nbsp;&nbsp;&nbsp;&nbsp;
+ :iphone:[Test App](https://appetize.io/embed/e03u41zbbamge6t9urecaredy4?device=nexus5&scale=65&orientation=portrait&osVersion=7.0)
 
 ## Usage
 
