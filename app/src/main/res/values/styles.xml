@@ -1,20 +1,26 @@
 <resources>
 
     <!-- Base application theme. -->
+    
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="android:textViewStyle">@style/RobotoTextViewStyle</item>
-        <item name="android:buttonStyle">@style/RobotoButtonStyle</item>
-        <!-- Customize your theme here. -->
+
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+    <!--<style name="AppTheme" parent="Theme.AppCompat">-->
 
-    <style name="RobotoTextViewStyle" parent="android:Widget.TextView">
-        <item name="android:fontFamily">sans-serif-light</item>
-    </style>
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
+        <!--<item name="colorAccent">@color/colorAccent</item>-->
+        <!--<item name="android:buttonStyle">@style/OnTimeStyle</item>-->
+    <!--</style>-->
 
-    <style name="RobotoButtonStyle" parent="android:Widget.Holo.Button">
-        <item name="android:fontFamily">sans-serif-light</item>
-    </style>
+    <!--<style name="OnTimeStyle" parent="android:style/Widget.Holo.Button">-->
+        <!--<item name="android:background">@color/colorPrimary</item>-->
+        <!--&lt;!&ndash;<item name="android:textStyle"> bold </item>&ndash;&gt;-->
+        <!--&lt;!&ndash;<item name="android:textColor">@color/white</item>&ndash;&gt;-->
+    <!--</style>-->
+
+
 </resources>

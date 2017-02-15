@@ -11,11 +11,37 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.oscar.ontime.MainActivity">
 
+
+    <RelativeLayout
+        android:id="@+id/duration_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <Button
+            android:id="@+id/btn_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="change"
+            android:layout_alignParentRight="true"
+            android:onClick="changeDuration"
+            />
+        <TextView
+            android:id="@+id/duration_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@id/btn_change"
+            android:text="@string/duration"/>
+
+
+    </RelativeLayout>
+
     <TextView
         android:id="@+id/start_lunch_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        android:layout_below="@id/duration_layout"
         android:text="Launch started at:"
         />
 
@@ -26,7 +52,7 @@
         android:text="Launch will end at:"
         android:textSize="22sp"
         android:padding="5dp"
-
+        android:elevation="15dp"
         android:layout_below="@id/start_lunch_time"
         />
 
@@ -47,5 +73,7 @@
         android:layout_below="@id/btn_start"
         android:layout_centerHorizontal="true"
         android:onClick="stopAlarm"/>
+
+
 
 </RelativeLayout>
