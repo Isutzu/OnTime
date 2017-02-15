@@ -18,7 +18,7 @@ action button.
 The following **additional** features will be implemented:
 
 - [ ] Pick the alarm sound
-- [ ] The ability to change the default 30min time by using a TimePicker dialog
+- [x] The ability to change the default 30min time by using a TimePicker dialog
 - [ ] Implementation of material design
 - [ ] Adding a shortcut to the tiles bar for a quick access
 - [ ] Improving user interface and user experience.
