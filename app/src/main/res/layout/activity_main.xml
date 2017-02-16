@@ -56,6 +56,15 @@
         android:layout_below="@id/start_lunch_time"
         />
 
+    <TextView
+        android:id="@+id/count_down_timer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="50sp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/colorAccent"
+        android:layout_below="@id/end_lunch_time"
+        />
     <Button
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"

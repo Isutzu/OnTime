@@ -8,18 +8,20 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.CountDownTimer;
+import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.format.Time;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity
     private int DEFAULT_DURATION = 30;
     private int min = DEFAULT_DURATION;
     TimePickerDialog tpd;
+    MyCountDownTimer mCountDownTimer ;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity
 
         String durationTimeLabel = getResources().getString(R.string.duration);
         tvDuration = (TextView)findViewById(R.id.duration_label);
+
         SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF_NAME,1);
         int min = sharedPreferences.getInt("userTimeSelection",DEFAULT_DURATION);
 
@@ -101,6 +105,11 @@ public class MainActivity extends AppCompatActivity
         btnStartLunch.setClickable(false);
 
 
+        TextView tv = (TextView)findViewById(R.id.count_down_timer);
+        mCountDownTimer = new MyCountDownTimer(tv,getUserTimeSelection()*60*1000,1000 * 60);
+        mCountDownTimer.start();
+
+
         Toast.makeText(this,"Enjoy Lunch..!!",Toast.LENGTH_SHORT).show();
     }
 
@@ -125,6 +134,7 @@ public class MainActivity extends AppCompatActivity
         Toast.makeText(this,"Alarm stopped",Toast.LENGTH_SHORT).show();
         NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(0);
+        mCountDownTimer.cancel();
     }
 
 
@@ -136,16 +146,14 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute)
             {
-
-                min = minute;
                 String durationTimeLabel = getResources().getString(R.string.duration);
                 tvDuration.setText(durationTimeLabel + minute + " min");
-                saveUserTimeSelection(min);
-
+                saveUserTimeSelection(minute);
             }
         };
 
-        tpd = new TimePickerDialog(this,2,timeListener,0,min,true);
+
+        tpd = new TimePickerDialog(this,2,timeListener,0,getUserTimeSelection(),true);
         tpd.setTitle("set your lunch duration");
         tpd.show();
 
@@ -158,6 +166,14 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt("userTimeSelection",min);
         editor.apply();
+    }
+
+    /************ getUserTimeSelection() ***************/
+    public int getUserTimeSelection()
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF_NAME,1);
+        return sharedPreferences.getInt("userTimeSelection",DEFAULT_DURATION);
+
     }
 
 }
