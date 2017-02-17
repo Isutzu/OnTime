@@ -22,7 +22,7 @@ public class MyCountDownTimer extends CountDownTimer
     @Override
     public void onTick(long millisUntilFinished)
     {
-        tvCount.setText("" + ((millisUntilFinished / 60000)));
+        tvCount.setText("" + ((millisUntilFinished / 60000)+"'"));
     }
 
     @Override

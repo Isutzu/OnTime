@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.XmlResourceParser;
 import android.os.CountDownTimer;
 import android.os.SystemClock;
 import android.support.v4.app.NotificationCompat;
@@ -37,8 +38,8 @@ public class MainActivity extends AppCompatActivity
 
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
-    Button btnStartLunch,btnStopAlarm;
-    TextView tvStartLunch,tvEndLunch,tvDuration;
+    Button btnStartLunch,btnStopAlarm,btnChange;
+    TextView tvStartLunch,tvEndLunch,tvDuration,tvCountDownTimer;
     Intent intent;
     private static  final String  BROADCAST_STRING ="com.example.oscar.ontime";
     private static final String MY_PREF_NAME = "USER_TIME";
@@ -50,11 +51,15 @@ public class MainActivity extends AppCompatActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         btnStartLunch = (Button)findViewById(R.id.btn_start);
         btnStopAlarm = (Button) findViewById(R.id.btn_stop);
+        btnChange = (Button)findViewById(R.id.btn_change);
+
         tvStartLunch = (TextView)findViewById(R.id.start_lunch_time);
         tvEndLunch = (TextView)findViewById(R.id.end_lunch_time);
-
+        tvCountDownTimer = (TextView)findViewById(R.id.count_down_timer);
+        tvCountDownTimer.setText(String.valueOf(getUserTimeSelection())+ "'");
         btnStopAlarm.setClickable(false);
         intent = new Intent();
         intent.setAction(BROADCAST_STRING);
@@ -102,10 +107,14 @@ public class MainActivity extends AppCompatActivity
         String endLunchLabel = getResources().getString(R.string.lunch_ends_label);
 
         tvStartLunch.setText(startLunchLabel + ":"+ df.format(currentTime));
+        tvEndLunch.setText(endLunchLabel     + ":" + df.format(alarmSetTime));
 
-        tvEndLunch.setText(endLunchLabel + "  :" + df.format(alarmSetTime));
         btnStartLunch.setClickable(false);
+        btnChange.setClickable(false);
         btnStopAlarm.setClickable(true);
+
+        
+
 
 
         TextView tv = (TextView)findViewById(R.id.count_down_timer);
@@ -137,14 +146,16 @@ public class MainActivity extends AppCompatActivity
         NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(0);
         mCountDownTimer.cancel();
+        btnChange.setClickable(true);
         TextView tv = (TextView)findViewById(R.id.count_down_timer);
-        tv.setText("");
+        tv.setText(String.valueOf(getUserTimeSelection()));
     }
 
 
     /************ changeDuration() ***************/
     public void changeDuration(View view)
     {
+
         TimePickerDialog.OnTimeSetListener timeListener = new TimePickerDialog.OnTimeSetListener(){
 
             @Override
@@ -153,6 +164,7 @@ public class MainActivity extends AppCompatActivity
                 String durationTimeLabel = getResources().getString(R.string.duration);
                 tvDuration.setText(durationTimeLabel + minute + " min");
                 saveUserTimeSelection(minute);
+                tvCountDownTimer.setText(String.valueOf(getUserTimeSelection()));
             }
         };
 
