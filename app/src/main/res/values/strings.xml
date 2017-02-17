@@ -3,6 +3,6 @@
     <string name="start_alarm">Start Lunch</string>
     <string name="stop_alarm"> Stop Alarm</string>
     <string name="duration"> Launch time duration:   </string>
-    <string name="lunch_start_label"> Lunch starts at: </string>
-    <string name = "lunch_ends_label"> Lunch ends at : </string>
+    <string name="lunch_start_label">   Start </string>
+    <string name = "lunch_ends_label">  End    </string>
 </resources>

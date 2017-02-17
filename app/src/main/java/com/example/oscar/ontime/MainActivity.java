@@ -28,20 +28,21 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import static android.app.PendingIntent.FLAG_CANCEL_CURRENT;
+// TO DO:
+// deactivate CHANGE button when alarm is running
+// add seconds to CountDownTimer
 
 public class MainActivity extends AppCompatActivity
 {
 
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
-    Button btnStartLunch;
+    Button btnStartLunch,btnStopAlarm;
     TextView tvStartLunch,tvEndLunch,tvDuration;
     Intent intent;
     private static  final String  BROADCAST_STRING ="com.example.oscar.ontime";
     private static final String MY_PREF_NAME = "USER_TIME";
     private int DEFAULT_DURATION = 30;
-    private int min = DEFAULT_DURATION;
     TimePickerDialog tpd;
     MyCountDownTimer mCountDownTimer ;
     @Override
@@ -50,10 +51,11 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         btnStartLunch = (Button)findViewById(R.id.btn_start);
+        btnStopAlarm = (Button) findViewById(R.id.btn_stop);
         tvStartLunch = (TextView)findViewById(R.id.start_lunch_time);
         tvEndLunch = (TextView)findViewById(R.id.end_lunch_time);
 
-
+        btnStopAlarm.setClickable(false);
         intent = new Intent();
         intent.setAction(BROADCAST_STRING);
 
@@ -87,22 +89,23 @@ public class MainActivity extends AppCompatActivity
         Date currentTime = calendar.getTime();
 
 
-        calendar.add(Calendar.MINUTE,min);
+        calendar.add(Calendar.MINUTE,getUserTimeSelection());
         Date alarmSetTime = calendar.getTime();
 
         pendingIntent = PendingIntent.getBroadcast(getBaseContext(),0,intent,0);
 
         alarmManager.setExact(AlarmManager.RTC_WAKEUP,calendar.getTimeInMillis(),pendingIntent);
-        String format = "h:mm:ss:a";
+        String format = " h:mm a";
 
         DateFormat df = new SimpleDateFormat(format);
         String startLunchLabel= getResources().getString(R.string.lunch_start_label);
         String endLunchLabel = getResources().getString(R.string.lunch_ends_label);
 
-        tvStartLunch.setText(startLunchLabel + df.format(currentTime));
+        tvStartLunch.setText(startLunchLabel + ":"+ df.format(currentTime));
 
-        tvEndLunch.setText(endLunchLabel + df.format(alarmSetTime));
+        tvEndLunch.setText(endLunchLabel + "  :" + df.format(alarmSetTime));
         btnStartLunch.setClickable(false);
+        btnStopAlarm.setClickable(true);
 
 
         TextView tv = (TextView)findViewById(R.id.count_down_timer);
@@ -125,16 +128,17 @@ public class MainActivity extends AppCompatActivity
         if (AlarmReceiver.getRingtone() != null)
         {
             AlarmReceiver.getRingtone().stop();
-            btnStartLunch = (Button)findViewById(R.id.btn_start);
-            tvStartLunch.setText("");
-            tvEndLunch.setText("");
 
         }
 
+        tvStartLunch.setText("");
+        tvEndLunch.setText("");
         Toast.makeText(this,"Alarm stopped",Toast.LENGTH_SHORT).show();
         NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(0);
         mCountDownTimer.cancel();
+        TextView tv = (TextView)findViewById(R.id.count_down_timer);
+        tv.setText("");
     }
 
 

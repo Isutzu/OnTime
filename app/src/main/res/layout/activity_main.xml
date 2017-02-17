@@ -16,6 +16,7 @@
         android:id="@+id/duration_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="25dp"
         >
 
         <Button
@@ -23,7 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="change"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
             android:onClick="changeDuration"
             />
         <TextView
@@ -41,15 +42,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="5dp"
+        android:textSize="22sp"
         android:layout_below="@id/duration_layout"
-        android:text="Launch started at:"
+        android:text=""
         />
 
     <TextView
         android:id="@+id/end_lunch_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Launch will end at:"
+        android:text=""
         android:textSize="22sp"
         android:padding="5dp"
         android:elevation="15dp"
@@ -60,28 +62,38 @@
         android:id="@+id/count_down_timer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="50sp"
+        android:textSize="70sp"
         android:gravity="center_horizontal"
         android:textColor="@color/colorAccent"
         android:layout_below="@id/end_lunch_time"
         />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/count_down_timer"
+        android:layout_marginTop="20dp"
+        android:orientation="vertical" >
     <Button
         android:id="@+id/btn_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
         android:text="@string/start_alarm"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:padding="25dp"
+        android:padding="20dp"
         android:onClick="startAlarm"/>
 
     <Button
+        android:id="@+id/btn_stop"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
         android:text="@string/stop_alarm"
-        android:layout_below="@id/btn_start"
-        android:layout_centerHorizontal="true"
         android:onClick="stopAlarm"/>
+
+    </LinearLayout>
 
 
 
