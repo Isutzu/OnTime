@@ -1,6 +1,10 @@
 package com.example.oscar.ontime;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.CountDownTimer;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -29,6 +33,7 @@ public class MyCountDownTimer extends CountDownTimer
     public void onFinish()
     {
         tvCount.setText("done!");
+
     }
 
 

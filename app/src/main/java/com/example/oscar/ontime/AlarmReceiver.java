@@ -1,5 +1,6 @@
 package com.example.oscar.ontime;
 
+import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -39,6 +41,11 @@ public class AlarmReceiver extends BroadcastReceiver
             Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALL);
             ringtone = RingtoneManager.getRingtone(context, alarmUri);
             ringtone.play();
+
+            Intent i = new Intent();
+            i.setClass(context,StopAlarmActivity.class);
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(i);
         }
 
 

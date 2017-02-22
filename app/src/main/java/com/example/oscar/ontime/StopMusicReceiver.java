@@ -1,10 +1,8 @@
 package com.example.oscar.ontime;
 
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.widget.Button;
 
 /**
  * Created by oscar on 2/9/17.

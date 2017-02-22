@@ -78,39 +78,15 @@
         />
 
 
-    <LinearLayout
-        android:id="@+id/btn_controls"
+
+    <Button
+        android:id="@+id/btn_start_stop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/count_down_timer"
-        android:layout_marginTop="30dp"
-        android:orientation="vertical" >
-    <Button
-        android:id="@+id/btn_start"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
         android:text="@string/start_alarm"
         android:theme="@style/ButtonApp"
-        android:padding="20dp"
-        android:onClick="startAlarm"/>
-
-    <Button
-        android:id="@+id/btn_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="10dp"
-        android:text="@string/stop_alarm"
-        android:onClick="stopAlarm"/>
-
-    </LinearLayout>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/start_alarm"
-        android:layout_below="@id/btn_controls"/>
+        android:onClick="startStopAlarm"
+        android:layout_alignParentBottom="true"/>
 
 
 </RelativeLayout>

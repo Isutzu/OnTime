@@ -55,7 +55,7 @@ if (alarmUp)
 - [Formatting Date and Time](http://stackoverflow.com/questions/2271131/display-the-current-time-and-date-in-an-android-application)
 - [custom TimePicker Dialog](https://android--examples.blogspot.com/2015/04/timepickerdialog-in-android.html)
 - [Fixing TimePickerDialog Theme on Nougat 7.0](https://gist.github.com/jeffdgr8/6bc5f990bf0c13a7334ce385d482af9f)
-
+- [Start activity](http://stackoverflow.com/questions/11153781/launch-an-activity-when-alarm-is-triggered)
 ## To Read
 - [custom TimePicker Dialog. Adjusting the minutes in intervals](https://github.com/ziaagikian/Custom-Time-Picker-Dialog)
 - [Material wheel view](https://android-arsenal.com/details/1/5184)
