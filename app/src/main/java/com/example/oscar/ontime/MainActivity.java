@@ -1,37 +1,42 @@
 package com.example.oscar.ontime;
 
 import android.app.AlarmManager;
-import android.app.AlertDialog;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.XmlResourceParser;
-import android.os.CountDownTimer;
-import android.os.SystemClock;
-import android.support.v4.app.NotificationCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.text.format.Time;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Chronometer;
-import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+//this is a new branch Simple_UI
 // TO DO:
 // deactivate CHANGE button when alarm is running
-// add seconds to CountDownTimer
+// set a reminder 10 min before the lunch hour(maybe)
+// adding vibration to alarm
+
+//        int hora = calendar.get(Calendar.HOUR);
+//        int minuto = calendar.get(Calendar.MINUTE);
+//        int segundo = calendar.get(calendar.SECOND);
+//        int hourMode = calendar.get(calendar.AM_PM);
+//        if (hourMode == 0)
+//        {
+//             AM_PM = " AM";}
+//        else
+//        {
+//             AM_PM = " PM";
+//        }
+
 
 public class MainActivity extends AppCompatActivity
 {
@@ -59,7 +64,8 @@ public class MainActivity extends AppCompatActivity
         tvStartLunch = (TextView)findViewById(R.id.start_lunch_time);
         tvEndLunch = (TextView)findViewById(R.id.end_lunch_time);
         tvCountDownTimer = (TextView)findViewById(R.id.count_down_timer);
-        tvCountDownTimer.setText(String.valueOf(getUserTimeSelection())+ "'");
+        tvCountDownTimer.setText(getUserTimeSelection() + "'");
+
         btnStopAlarm.setClickable(false);
         intent = new Intent();
         intent.setAction(BROADCAST_STRING);
@@ -78,19 +84,9 @@ public class MainActivity extends AppCompatActivity
     public void startAlarm(View view)
     {
         alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
+
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(System.currentTimeMillis());
-//        int hora = calendar.get(Calendar.HOUR);
-//       int minuto = calendar.get(Calendar.MINUTE);
-//        int segundo = calendar.get(calendar.SECOND);
-//        int hourMode = calendar.get(calendar.AM_PM);
-//        if (hourMode == 0)
-//        {
-//             AM_PM = " AM";}
-//        else
-//        {
-//             AM_PM = " PM";
-//        }
         Date currentTime = calendar.getTime();
 
 
@@ -113,12 +109,8 @@ public class MainActivity extends AppCompatActivity
         btnChange.setClickable(false);
         btnStopAlarm.setClickable(true);
 
-        
-
-
-
         TextView tv = (TextView)findViewById(R.id.count_down_timer);
-        mCountDownTimer = new MyCountDownTimer(tv,getUserTimeSelection()*60*1000,1000 * 60);
+        mCountDownTimer = new MyCountDownTimer(tv,getUserTimeSelection()*60*1000,1000);
         mCountDownTimer.start();
 
 
@@ -148,7 +140,7 @@ public class MainActivity extends AppCompatActivity
         mCountDownTimer.cancel();
         btnChange.setClickable(true);
         TextView tv = (TextView)findViewById(R.id.count_down_timer);
-        tv.setText(String.valueOf(getUserTimeSelection()));
+        tv.setText(String.valueOf(getUserTimeSelection()) + "'");
     }
 
 
@@ -164,12 +156,12 @@ public class MainActivity extends AppCompatActivity
                 String durationTimeLabel = getResources().getString(R.string.duration);
                 tvDuration.setText(durationTimeLabel + minute + " min");
                 saveUserTimeSelection(minute);
-                tvCountDownTimer.setText(String.valueOf(getUserTimeSelection()));
+                tvCountDownTimer.setText(String.valueOf(getUserTimeSelection()) + "'");
             }
         };
 
 
-        tpd = new TimePickerDialog(this,2,timeListener,0,getUserTimeSelection(),true);
+        tpd = new TimePickerDialog(this,3,timeListener,0,getUserTimeSelection(),true);
         tpd.setTitle("set your lunch duration");
         tpd.show();
 
@@ -178,7 +170,7 @@ public class MainActivity extends AppCompatActivity
     /************ saveUserTimeSelection() ***************/
     public void saveUserTimeSelection(int min)
     {
-       SharedPreferences sp = getSharedPreferences(MY_PREF_NAME,1);
+        SharedPreferences sp = getSharedPreferences(MY_PREF_NAME,1);
         SharedPreferences.Editor editor = sp.edit();
         editor.putInt("userTimeSelection",min);
         editor.apply();

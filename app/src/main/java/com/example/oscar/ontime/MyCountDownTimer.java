@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 public class MyCountDownTimer extends CountDownTimer
 {
-    TextView tvCount;
+    private TextView tvCount;
 
     public MyCountDownTimer(TextView tvCountTimerText, long millisInFuture, long countDownInterval)
     {
@@ -22,7 +22,7 @@ public class MyCountDownTimer extends CountDownTimer
     @Override
     public void onTick(long millisUntilFinished)
     {
-        tvCount.setText("" + ((millisUntilFinished / 60000)+"'"));
+        tvCount.setText("" + ((millisUntilFinished / 60000)+"'" + ":"+(millisUntilFinished % 60000 / 1000) +"''" ));
     }
 
     @Override
