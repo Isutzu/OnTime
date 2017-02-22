@@ -5,13 +5,12 @@ At work I have 30min for taking lunch so I use this app to keep track of the tim
 The alarm is set up to fire by default 30min after the activation but this time can be changed
 and use it as a general purpose alarm.(this is a working progress feature)
 
- :floppy_disk: [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true) &nbsp;&nbsp;&nbsp;&nbsp;
- :iphone:[Test App](https://appetize.io/embed/e03u41zbbamge6t9urecaredy4?device=nexus5&scale=65&orientation=portrait&osVersion=7.0)
+
 
 ## Usage
 
 * Just press the -- start lunch -- button and the alarm will fire up 30min after.
-* A notification is received when the alarm is activated which can be stopped it by pressing the
+* A notification is received when the alarm is activated which can be stopped it by pressing the STOP ALARM
 action button.
 
 
@@ -23,7 +22,8 @@ The following **additional** features will be implemented:
 - [x] Adding seconds to CountDownTimer
 - [ ] Implementation of material design
 - [ ] Adding a shortcut to the tiles bar for a quick access
-- [ ] Improving user interface and user experience.
+- [ ] Improving user interface and user experience. We can get the same funcionality by using only one button instead of two(start/stop)
+
 
 ## Video Walkthrough
 
