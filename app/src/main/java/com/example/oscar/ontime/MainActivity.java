@@ -8,6 +8,7 @@ import android.app.TimePickerDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -78,8 +79,15 @@ public class MainActivity extends AppCompatActivity
         SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF_NAME,1);
         int min = sharedPreferences.getInt("userTimeSelection",DEFAULT_DURATION);
 
-        tvDuration.setText(durationTimeLabel + min +" min");
+        tvDuration.setText(durationTimeLabel + ": " + min +" min");
 
+    }
+
+    @Override
+    public void onBackPressed()
+    {
+        //super.onBackPressed();
+        moveTaskToBack(true);
     }
 
     /************ startAlarm() ***************/
@@ -119,6 +127,7 @@ public class MainActivity extends AppCompatActivity
             mCountDownTimer.start();
 
             btnStartStop.setText("STOP");
+            btnStartStop.setTextColor(Color.BLACK);
             btnChange.setVisibility(View.INVISIBLE);
             stopAlarmFlag = true;
 
@@ -149,7 +158,7 @@ public class MainActivity extends AppCompatActivity
         TextView tv = (TextView)findViewById(R.id.count_down_timer);
         tv.setText(String.valueOf(getUserTimeSelection()) + "'");
 
-        btnStartStop.setText("START LUNCH");
+        btnStartStop.setText(getResources().getString(R.string.start_alarm));
         btnChange.setVisibility(View.VISIBLE);
 
 
@@ -166,7 +175,7 @@ public class MainActivity extends AppCompatActivity
             public void onTimeSet(TimePicker view, int hourOfDay, int minute)
             {
                 String durationTimeLabel = getResources().getString(R.string.duration);
-                tvDuration.setText(durationTimeLabel + minute + " min");
+                tvDuration.setText(durationTimeLabel + ": " + minute + " min");
                 saveUserTimeSelection(minute);
                 tvCountDownTimer.setText(String.valueOf(getUserTimeSelection()) + "'");
             }

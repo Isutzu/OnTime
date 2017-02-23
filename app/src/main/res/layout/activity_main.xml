@@ -33,6 +33,7 @@
             android:id="@+id/duration_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
             android:layout_alignBaseline="@id/btn_change"
             android:text="@string/duration"/>
 
@@ -83,10 +84,21 @@
         android:id="@+id/btn_start_stop"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingTop="20dp"
+        android:layout_marginTop="5dp"
+        android:textSize="18sp"
         android:text="@string/start_alarm"
-        android:theme="@style/ButtonApp"
+        android:textColor="@android:color/black"
+        style="@style/Widget.AppCompat.Button.Borderless"
         android:onClick="startStopAlarm"
         android:layout_alignParentBottom="true"/>
+
+    <View
+        android:layout_above="@id/btn_start_stop"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray"/>
 
 
 </RelativeLayout>
