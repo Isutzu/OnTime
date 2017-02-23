@@ -25,6 +25,7 @@ public class AlarmReceiver extends BroadcastReceiver
 
     static Ringtone ringtone;
     static NotificationManager notificationManager;
+
     @Override
     public void onReceive(Context context, Intent intent)
     {
@@ -35,22 +36,18 @@ public class AlarmReceiver extends BroadcastReceiver
                 actionName.equals("com.example.oscar.ontime"))
         {
 
-            sendNotification(context);
+           // sendNotification(context);
 
             Toast.makeText(context,"Time to go back ", Toast.LENGTH_SHORT).show();
             Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALL);
             ringtone = RingtoneManager.getRingtone(context, alarmUri);
             ringtone.play();
 
-            Intent i = new Intent();
-            i.setClass(context,StopAlarmActivity.class);
-            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            Intent i = new Intent(context,MainActivity.class);
+
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_SINGLE_TOP );
             context.startActivity(i);
         }
-
-
-
-
 
     }
 
