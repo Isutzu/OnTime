@@ -1,6 +1,5 @@
 package com.example.oscar.ontime;
 
-import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -11,8 +10,12 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
+import android.support.v4.app.NotificationCompat.Builder;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
@@ -22,9 +25,9 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+
 //this is a new branch Simple_UI
 // TO DO:
-// deactivate CHANGE button when alarm is running
 // set a reminder 10 min before the lunch hour(maybe)
 // adding vibration to alarm
 
@@ -88,6 +91,31 @@ public class MainActivity extends AppCompatActivity
     {
         //super.onBackPressed();
         moveTaskToBack(true);
+    }
+
+    @Override
+    protected void onPause()
+    {
+        super.onPause();
+        if(stopAlarmFlag)
+        {
+            Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
+            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+            RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.notification_layout);
+
+            Intent in = new Intent(context, MainActivity.class);
+            in.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            PendingIntent pi = PendingIntent.getActivity(context, 0, in, 0);
+            NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(context)
+                    .setSmallIcon(R.mipmap.ic_launcher)
+                    .setAutoCancel(true)
+                    .setContentTitle("Alarm is on")
+                    .setContentText("Time is running..")
+                    .setContent(remoteViews)
+                    .setContentIntent(pi);
+            nm.notify(0, notificationBuilder.build());
+        }
     }
 
     /************ startAlarm() ***************/

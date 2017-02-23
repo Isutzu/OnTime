@@ -33,6 +33,7 @@
             android:id="@+id/duration_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="15sp"
             android:textColor="@android:color/black"
             android:layout_alignBaseline="@id/btn_change"
             android:text="@string/duration"/>
