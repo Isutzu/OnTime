@@ -36,7 +36,7 @@ On this branch the following **additional** features have been implemented:
 
 For demonstration the alarm have been set to fire up after 10 seconds
 
-GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
 
 **current version(simple_UI branch)**
 
@@ -44,7 +44,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 <img src='http://i.imgur.com/L2edNw3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' style="float:left" />
 
-
+GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
 
@@ -72,7 +72,9 @@ if (alarmUp)
 - [Custom notification](http://www.tutorialsface.com/2015/08/android-custom-notification-tutorial/)
 - [Custom notification](http://www.androidauthority.com/create-powerful-notifications-708496/)
 - [TimePicker](http://stackoverflow.com/questions/26906327/how-to-show-the-hours-only-using-timepicker-in-android)
+
 ## To Read
+
 - [custom TimePicker Dialog. Adjusting the minutes in intervals](https://github.com/ziaagikian/Custom-Time-Picker-Dialog)
 - [Material wheel view](https://android-arsenal.com/details/1/5184)
 - [WheelView](https://github.com/LukeDeighton/WheelView)
