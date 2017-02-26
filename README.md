@@ -37,9 +37,9 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ### this is the current version of this branch
 
-<img src='http://i.imgur.com/hf3RqDX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+<img src='http://i.imgur.com/hf3RqDX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' style="float:left;"/>
 
-<img src='http://i.imgur.com/L2edNw3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' style="float:left"/>
+<img src='http://i.imgur.com/L2edNw3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 
 
