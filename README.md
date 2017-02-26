@@ -34,7 +34,6 @@ The following **additional** features will be implemented:
 
 For demonstration the alarm have been set to fire up after 10 seconds
 
-<blockquote class="imgur-embed-pub" lang="en" data-id="a/i3T6I"><a href="//imgur.com/i3T6I">OnTime</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
