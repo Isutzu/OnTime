@@ -12,7 +12,7 @@ and use it as a general purpose alarm.
 * Just press the <button>START LUNCH </button>  button and the alarm will fire up 30min after.
 * A notification is received when the the HOME or BACK button is pressed and the CountDownTimer
  will appear on the notification.
-* When the alarm is activated an Activity will appear and the user can stop the sound and reset the alarm by pressing the <button> STOP </button>
+* When the alarm is activated the main Activity will appear and on top and the user can stop the sound and reset the alarm by pressing the <button> STOP </button> button
 
 
 
@@ -30,6 +30,7 @@ On this branch the following **additional** features have been implemented:
 
 ## Video Walkthrough
 
+**old version(Master branch)**
 
 <img src='http://i.imgur.com/Oa4Opi9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
@@ -37,7 +38,7 @@ For demonstration the alarm have been set to fire up after 10 seconds
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
-### this is the current version of this branch
+**current version(simple_UI branch)**
 
 <img src='http://i.imgur.com/hf3RqDX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' style="float:left"/>
 
