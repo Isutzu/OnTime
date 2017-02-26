@@ -9,21 +9,23 @@ and use it as a general purpose alarm.
 
 ## Usage
 
-* Just press the -- start lunch -- button and the alarm will fire up 30min after.
-* A notification is received when the alarm is activated which can be stopped it by pressing the STOP ALARM
-action button.
+* Just press the <button>START LUNCH </button>  button and the alarm will fire up 30min after.
+* A notification is received when the the HOME or BACK button is pressed and the CountDownTimer
+ will appear on the notification.
+* When the alarm is activated an Activity will appear and the user can stop the sound and reset the alarm by pressing the <button> STOP </button>
 
 
-The following **additional** features will be implemented:
+
+On this branch the following **additional** features have been implemented:
 
 - [ ] Pick alarm sound or music.
 - [x] The ability to change the default 30min time by using a TimePicker dialog
 - [x] Adding a CountDownTimer
-- [x] Adding CountDownTimer to Notification.
+- [x] Adding CountDownTimer to the Notification.
 - [x] Adding seconds to CountDownTimer
 - [ ] Implementation of material design
 - [ ] Adding a shortcut to the tiles bar for a quick access
-- [x] Improving user interface and user experience. We can get the same functionality by using only one button instead of   two(start/stop)
+- [x] Improving user interface and user experience by using only one button instead of   two(start/stop)
 
 
 ## Video Walkthrough
