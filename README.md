@@ -19,10 +19,11 @@ The following **additional** features will be implemented:
 - [ ] Pick alarm sound or music.
 - [x] The ability to change the default 30min time by using a TimePicker dialog
 - [x] Adding a CountDownTimer
+- [x] Adding CountDownTimer to Notification.
 - [x] Adding seconds to CountDownTimer
 - [ ] Implementation of material design
 - [ ] Adding a shortcut to the tiles bar for a quick access
-- [ ] Improving user interface and user experience. We can get the same funcionality by using only one button instead of two(start/stop)
+- [x] Improving user interface and user experience. We can get the same functionality by using only one button instead of   two(start/stop)
 
 
 ## Video Walkthrough
@@ -33,6 +34,11 @@ The following **additional** features will be implemented:
 For demonstration the alarm have been set to fire up after 10 seconds
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
+
+### this is the current version of this branch
+
+<img src='http://i.imgur.com/hf3RqDX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 
 
 ## Notes
