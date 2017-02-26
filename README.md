@@ -39,7 +39,7 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 <img src='http://i.imgur.com/hf3RqDX.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' style="float:left"/>
 
-<img src='http://i.imgur.com/L2edNw3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' style="float:right" />
+<img src='http://i.imgur.com/L2edNw3.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' style="float:left" />
 
 
 
