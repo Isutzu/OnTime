@@ -15,10 +15,13 @@ import android.support.v4.app.NotificationCompat.Builder;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Chronometer;
 import android.widget.RemoteViews;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -50,39 +53,43 @@ public class MainActivity extends AppCompatActivity
     PendingIntent pendingIntent;
     AlarmManager alarmManager;
     Button btnChange, btnStartStop;
-    TextView tvStartLunch,tvEndLunch,tvDuration,tvCountDownTimer;
+    TextView tvStartLunch, tvEndLunch, tvDuration, tvCountDownTimer, tvTimer;
     Intent intent;
-    private static  final String  BROADCAST_STRING ="com.example.oscar.ontime";
+    private static final String BROADCAST_STRING = "com.example.oscar.ontime";
     private static final String MY_PREF_NAME = "USER_TIME";
     private int DEFAULT_DURATION = 30;
     private boolean stopAlarmFlag = false;
     TimePickerDialog tpd;
-    MyCountDownTimer mCountDownTimer ;
+    MyCountDownTimer mCountDownTimer;
     Context context;
+    static NotificationManager nm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = getApplicationContext();
-        btnChange = (Button)findViewById(R.id.btn_change);
-        btnStartStop = (Button)findViewById(R.id.btn_start_stop);
+        btnChange = (Button) findViewById(R.id.btn_change);
+        btnStartStop = (Button) findViewById(R.id.btn_start_stop);
 
-        tvStartLunch = (TextView)findViewById(R.id.start_lunch_time);
-        tvEndLunch = (TextView)findViewById(R.id.end_lunch_time);
-        tvCountDownTimer = (TextView)findViewById(R.id.count_down_timer);
+        tvStartLunch = (TextView) findViewById(R.id.start_lunch_time);
+        tvEndLunch = (TextView) findViewById(R.id.end_lunch_time);
+        tvCountDownTimer = (TextView) findViewById(R.id.count_down_timer);
         tvCountDownTimer.setText(getUserTimeSelection() + "'");
+        tvTimer = (TextView) findViewById(R.id.notification_timer);
 
+        nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         intent = new Intent();
         intent.setAction(BROADCAST_STRING);
 
         String durationTimeLabel = getResources().getString(R.string.duration);
-        tvDuration = (TextView)findViewById(R.id.duration_label);
+        tvDuration = (TextView) findViewById(R.id.duration_label);
 
-        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF_NAME,1);
-        int min = sharedPreferences.getInt("userTimeSelection",DEFAULT_DURATION);
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF_NAME, 1);
+        int min = sharedPreferences.getInt("userTimeSelection", DEFAULT_DURATION);
 
-        tvDuration.setText(durationTimeLabel + ": " + min +" min");
+        tvDuration.setText(durationTimeLabel + ": " + min + " min");
 
     }
 
@@ -97,36 +104,27 @@ public class MainActivity extends AppCompatActivity
     protected void onPause()
     {
         super.onPause();
-        if(stopAlarmFlag)
+        if (stopAlarmFlag)
         {
-            Toast.makeText(context, "yes", Toast.LENGTH_SHORT).show();
-            NotificationManager nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-
-            RemoteViews remoteViews = new RemoteViews(getPackageName(),R.layout.notification_layout);
+//            RemoteViews remoteViews = new RemoteViews(getPackageName(), R.layout.notification_layout);
+  //          remoteViews.setTextViewText(R.id.notification_timer, "veamos");
+    //        remoteViews.setImageViewResource(R.id.icon_notification, R.drawable.clock);
 
             Intent in = new Intent(context, MainActivity.class);
             in.setFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-            PendingIntent pi = PendingIntent.getActivity(context, 0, in, 0);
-            NotificationCompat.Builder notificationBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(context)
-                    .setSmallIcon(R.mipmap.ic_launcher)
-                    .setAutoCancel(true)
-                    .setContentTitle("Alarm is on")
-                    .setContentText("Time is running..")
-                    .setContent(remoteViews)
-                    .setContentIntent(pi);
-            nm.notify(0, notificationBuilder.build());
+            mCountDownTimer.setSendNotification(true);
         }
     }
 
-    /************ startAlarm() ***************/
+
+    /************* startAlarm()***************/
     public void startStopAlarm(View view)
     {
         if (stopAlarmFlag)
         {
             stopAlarm();
-            stopAlarmFlag=false;
-        }
-        else
+            stopAlarmFlag = false;
+        } else
         {
             alarmManager = (AlarmManager) getSystemService(ALARM_SERVICE);
 
@@ -151,7 +149,7 @@ public class MainActivity extends AppCompatActivity
             tvEndLunch.setText(endLunchLabel + ":" + df.format(alarmSetTime));
 
             TextView tv = (TextView) findViewById(R.id.count_down_timer);
-            mCountDownTimer = new MyCountDownTimer(tv, getUserTimeSelection() * 60 * 1000, 1000);
+            mCountDownTimer = new MyCountDownTimer(context, tv, getUserTimeSelection() * 60 * 1000, 1000);
             mCountDownTimer.start();
 
             btnStartStop.setText("STOP");
@@ -164,10 +162,10 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    /************ stopAlarm() ***************/
+    /************* stopAlarm()***************/
     public void stopAlarm()
     {
-        if(null != PendingIntent.getBroadcast(getBaseContext(),0,intent,PendingIntent.FLAG_NO_CREATE))
+        if (null != PendingIntent.getBroadcast(getBaseContext(), 0, intent, PendingIntent.FLAG_NO_CREATE))
         {
             alarmManager.cancel(pendingIntent);
         }
@@ -179,11 +177,11 @@ public class MainActivity extends AppCompatActivity
 
         tvStartLunch.setText("");
         tvEndLunch.setText("");
-        Toast.makeText(this,"Alarm stopped",Toast.LENGTH_SHORT).show();
-        NotificationManager notificationManager = (NotificationManager)getSystemService(NOTIFICATION_SERVICE);
+        Toast.makeText(this, "Alarm stopped", Toast.LENGTH_SHORT).show();
+        NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         notificationManager.cancel(0);
         mCountDownTimer.cancel();
-        TextView tv = (TextView)findViewById(R.id.count_down_timer);
+        TextView tv = (TextView) findViewById(R.id.count_down_timer);
         tv.setText(String.valueOf(getUserTimeSelection()) + "'");
 
         btnStartStop.setText(getResources().getString(R.string.start_alarm));
@@ -197,7 +195,8 @@ public class MainActivity extends AppCompatActivity
     public void changeDuration(View view)
     {
 
-        TimePickerDialog.OnTimeSetListener timeListener = new TimePickerDialog.OnTimeSetListener(){
+        TimePickerDialog.OnTimeSetListener timeListener = new TimePickerDialog.OnTimeSetListener()
+        {
 
             @Override
             public void onTimeSet(TimePicker view, int hourOfDay, int minute)
@@ -210,27 +209,26 @@ public class MainActivity extends AppCompatActivity
         };
 
 
-        tpd = new TimePickerDialog(this,3,timeListener,0,getUserTimeSelection(),true);
+        tpd = new TimePickerDialog(this, 3, timeListener, 0, getUserTimeSelection(), true);
         tpd.setTitle("set your lunch duration");
         tpd.show();
 
     }
 
-    /************ saveUserTimeSelection() ***************/
+    /************* saveUserTimeSelection() ***************/
     public void saveUserTimeSelection(int min)
     {
-        SharedPreferences sp = getSharedPreferences(MY_PREF_NAME,1);
+        SharedPreferences sp = getSharedPreferences(MY_PREF_NAME, 1);
         SharedPreferences.Editor editor = sp.edit();
-        editor.putInt("userTimeSelection",min);
+        editor.putInt("userTimeSelection", min);
         editor.apply();
     }
 
-    /************ getUserTimeSelection() ***************/
+    /************* getUserTimeSelection() ***************/
     public int getUserTimeSelection()
     {
-        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF_NAME,1);
-        return sharedPreferences.getInt("userTimeSelection",DEFAULT_DURATION);
+        SharedPreferences sharedPreferences = getSharedPreferences(MY_PREF_NAME, 1);
+        return sharedPreferences.getInt("userTimeSelection", DEFAULT_DURATION);
 
     }
-
 }

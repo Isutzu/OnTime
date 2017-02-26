@@ -36,17 +36,13 @@ public class AlarmReceiver extends BroadcastReceiver
                 actionName.equals("com.example.oscar.ontime"))
         {
 
-            //sendNotification(context);
-
-           // Toast.makeText(context,"Time to go back ", Toast.LENGTH_SHORT).show();
-            //Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALL);
-            //ringtone = RingtoneManager.getRingtone(context, alarmUri);
-            //ringtone.play();
-
             Intent i = new Intent(context,MainActivity.class);
 
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK| Intent.FLAG_ACTIVITY_SINGLE_TOP );
             context.startActivity(i);
+            Uri alarmUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_ALL);
+            ringtone = RingtoneManager.getRingtone(context, alarmUri);
+            ringtone.play();
         }
 
     }
