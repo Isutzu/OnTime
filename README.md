@@ -3,11 +3,12 @@
 **OnTime** is a simple alarm application for Android.
 At work I have 30min for taking lunch so I use this app to keep track of the time
 The alarm is set up to fire by default 30min after the activation but this time can be changed
-and use it as a general purpose alarm.(this is a working progress feature)
-**current version of the app is on the simple_UI branch**
+and use it as a general purpose alarm.(this is a working progress feature.
 
- :floppy_disk: [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true) &nbsp;&nbsp;&nbsp;&nbsp;
- :iphone:[Test App](https://appetize.io/embed/e03u41zbbamge6t9urecaredy4?device=nexus5&scale=65&orientation=portrait&osVersion=7.0)
+**The current version of the app is on the simple_UI branch**
+
+ <!-- :floppy_disk: [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true) &nbsp;&nbsp;&nbsp;&nbsp;
+ :iphone:[Test App](https://appetize.io/embed/e03u41zbbamge6t9urecaredy4?device=nexus5&scale=65&orientation=portrait&osVersion=7.0) -->
 
 ## Usage
 
@@ -27,7 +28,7 @@ The following **additional** features will be implemented:
 - [ ] Improving user interface and user experience.
 
 ## Video Walkthrough
-**current version of the app is on the simple_UI branch**
+**this is the old version, the current version of the app is on the simple_UI branch**
 
 <img src='http://i.imgur.com/Oa4Opi9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
