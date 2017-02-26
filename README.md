@@ -4,6 +4,7 @@
 At work I have 30min for taking lunch so I use this app to keep track of the time
 The alarm is set up to fire by default 30min after the activation but this time can be changed
 and use it as a general purpose alarm.(this is a working progress feature)
+**current version of the app is on the simple_UI branch**
 
  :floppy_disk: [Download apk](https://github.com/Isutzu/OnTime/blob/master/OnTime.apk?raw=true) &nbsp;&nbsp;&nbsp;&nbsp;
  :iphone:[Test App](https://appetize.io/embed/e03u41zbbamge6t9urecaredy4?device=nexus5&scale=65&orientation=portrait&osVersion=7.0)
@@ -18,15 +19,15 @@ action button.
 The following **additional** features will be implemented:
 
 - [ ] Pick alarm sound or music.
-- [x] The ability to change the default 30min time by using a TimePicker dialog
-- [x] Adding a CountDownTimer
+- [ ] The ability to change the default 30min time by using a TimePicker dialog
+- [ ] Adding a CountDownTimer
 - [ ] Adding seconds to CountDownTimer
 - [ ] Implementation of material design
 - [ ] Adding a shortcut to the tiles bar for a quick access
 - [ ] Improving user interface and user experience.
 
 ## Video Walkthrough
-
+**current version of the app is on the simple_UI branch**
 
 <img src='http://i.imgur.com/Oa4Opi9.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
