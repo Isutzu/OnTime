@@ -25,6 +25,8 @@ On this branch the following **additional** features have been implemented:
 - [x] Adding seconds to CountDownTimer
 - [ ] Implementation of material design
 - [ ] Adding a shortcut to the tiles bar for a quick access
+- [ ] Fixing the TimePickerDialog wrong theme on Nougat (see resource section)
+
 - [x] Improving user interface and user experience by using only one button instead of   two(start/stop)
 
 
