@@ -3,7 +3,7 @@
 **OnTime** is a simple alarm application for Android.
 At work I have 30min for taking lunch so I use this app to keep track of the time
 The alarm is set up to fire by default 30min after the activation but this time can be changed
-and use it as a general purpose alarm.(this is a working progress feature.
+and use it as a general purpose alarm.
 
 **The current version of the app is on the simple_UI branch**
 
