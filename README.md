@@ -46,8 +46,6 @@ GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 
 
-
-
 ## Notes
 
 How to check if AlarmManager already has an alarm set?
