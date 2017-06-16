@@ -11,8 +11,12 @@ import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
+import android.support.v4.widget.TextViewCompat;
 import android.widget.RemoteViews;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import org.w3c.dom.Text;
 
 import static android.support.v4.app.NotificationCompat.VISIBILITY_PUBLIC;
 
@@ -74,7 +78,7 @@ public class AlarmReceiver extends BroadcastReceiver
 
          notificationManager =
                 (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.notify(0,notificationBuilder.build());
+        notificationManager.notify(1001,notificationBuilder.build());
 
 
 
