@@ -1,6 +1,5 @@
 package com.example.oscar.ontime;
 
-import android.app.Activity;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -9,14 +8,10 @@ import android.content.Intent;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.NotificationCompat;
-import android.support.v4.widget.TextViewCompat;
-import android.widget.RemoteViews;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.Window;
+import android.view.WindowManager;
 
-import org.w3c.dom.Text;
 
 import static android.support.v4.app.NotificationCompat.VISIBILITY_PUBLIC;
 
@@ -39,6 +34,8 @@ public class AlarmReceiver extends BroadcastReceiver
         if(actionName != null &&
                 actionName.equals("com.example.oscar.ontime"))
         {
+
+
 
             Intent i = new Intent(context,MainActivity.class);
 

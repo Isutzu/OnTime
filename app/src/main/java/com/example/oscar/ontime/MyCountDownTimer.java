@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.CountDownTimer;
 import android.support.v4.app.NotificationCompat;
+import android.widget.Button;
 import android.widget.TextView;
 
 /**
@@ -16,7 +17,9 @@ public class MyCountDownTimer extends CountDownTimer
 {
     private TextView tvCount;
     Context context;
-    boolean sendNotification = false;
+   static boolean sendNotification = false;
+
+
 
 
 
@@ -32,11 +35,18 @@ public class MyCountDownTimer extends CountDownTimer
     public void onTick(long millisUntilFinished)
     {
         String remainingTime = ((millisUntilFinished / 60000)+"'" + ":"+(millisUntilFinished % 60000 / 1000) +"''" );
-        tvCount.setText("" + ((millisUntilFinished / 60000)+"'" + ":"+(millisUntilFinished % 60000 / 1000) +"''" ));
+        tvCount.setText("" + ((millisUntilFinished / 60000) + "'" + ":" + (millisUntilFinished % 60000 / 1000) + "''"));
+
         if (sendNotification)
         {
             updateNotifications(remainingTime);
         }
+        else
+        {
+            NotificationManager nm =  (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
+            nm.cancel(1001);
+        }
+
 
     }
 
@@ -49,24 +59,29 @@ public class MyCountDownTimer extends CountDownTimer
         NotificationManager nm =  (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
 
         NotificationCompat.Builder notification = new NotificationCompat.Builder(context);
-        notification.setContentTitle("Remaining time:");
+        notification.setContentTitle("Remaining time: ");
         notification.setContentText(remainingTime);
+        notification.setColor(34567);
         notification.setContentIntent(pi);
+        notification.setOngoing(true);
         notification.setSmallIcon(R.drawable.clock);
         notification.setTicker("Alarm on");
-        nm.notify(0,notification.build());
+        nm.notify(1001,notification.build());
     }
 
     @Override
     public void onFinish()
     {
         tvCount.setText("done!");
+//        Intent i = new Intent(context,StopAlarmActivity.class);
+//        i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//        context.startActivity(i);
 
     }
 
-    public void setSendNotification(boolean sendNotification)
+    public static void setSendNotification(boolean sendNotification1)
     {
-        this.sendNotification = sendNotification;
+        sendNotification = sendNotification1;
     }
 
 

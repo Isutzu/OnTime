@@ -12,8 +12,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.support.v4.app.NotificationCompat.Builder;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.RemoteViews;
@@ -29,7 +32,7 @@ import java.util.Calendar;
 import java.util.Date;
 
 
-//this is a new branch Simple_UI
+//this is a new branch hide_Notification
 // TO DO:
 // set a reminder 10 min before the lunch hour(maybe)
 // adding vibration to alarm
@@ -59,6 +62,7 @@ public class MainActivity extends AppCompatActivity
     private static final String MY_PREF_NAME = "USER_TIME";
     private int DEFAULT_DURATION = 30;
     private boolean stopAlarmFlag = false;
+    static boolean uiVisible = false;
     TimePickerDialog tpd;
     MyCountDownTimer mCountDownTimer;
     Context context;
@@ -91,6 +95,12 @@ public class MainActivity extends AppCompatActivity
 
         tvDuration.setText(durationTimeLabel + ": " + min + " min");
 
+        Window win = getWindow();
+        win.addFlags(WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED );
+        win.addFlags(WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+        win.addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON );
+        win.addFlags(WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+
     }
 
     @Override
@@ -98,6 +108,15 @@ public class MainActivity extends AppCompatActivity
     {
         //super.onBackPressed();
         moveTaskToBack(true);
+    }
+
+    @Override
+    protected void onResume()
+    {
+        super.onResume();
+        Log.d("LIFE-CYCLE","onResume()");
+        nm.cancel(1001);
+        MyCountDownTimer.setSendNotification(false);
     }
 
     @Override
@@ -117,7 +136,8 @@ public class MainActivity extends AppCompatActivity
     }
 
 
-    /************* startAlarm()***************/
+
+    /************* startStopAlarm()***************/
     public void startStopAlarm(View view)
     {
         if (stopAlarmFlag)
@@ -149,11 +169,12 @@ public class MainActivity extends AppCompatActivity
             tvEndLunch.setText(endLunchLabel + ":" + df.format(alarmSetTime));
 
             TextView tv = (TextView) findViewById(R.id.count_down_timer);
+
             mCountDownTimer = new MyCountDownTimer(context, tv, getUserTimeSelection() * 60 * 1000, 1000);
             mCountDownTimer.start();
 
             btnStartStop.setText("STOP");
-            btnStartStop.setTextColor(Color.BLACK);
+            btnStartStop.setTextColor(Color.argb(255,255,64,129));
             btnChange.setVisibility(View.INVISIBLE);
             stopAlarmFlag = true;
 
@@ -179,12 +200,13 @@ public class MainActivity extends AppCompatActivity
         tvEndLunch.setText("");
         Toast.makeText(this, "Alarm stopped", Toast.LENGTH_SHORT).show();
         NotificationManager notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        notificationManager.cancel(0);
+        notificationManager.cancel(1001);
         mCountDownTimer.cancel();
         TextView tv = (TextView) findViewById(R.id.count_down_timer);
         tv.setText(String.valueOf(getUserTimeSelection()) + "'");
 
         btnStartStop.setText(getResources().getString(R.string.start_alarm));
+        btnStartStop.setTextColor(Color.BLACK);
         btnChange.setVisibility(View.VISIBLE);
 
 
